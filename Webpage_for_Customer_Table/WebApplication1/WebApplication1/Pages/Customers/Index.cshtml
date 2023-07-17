@@ -1,0 +1,56 @@
+﻿@page
+@model WebApplication1.Pages.Clients.IndexModel
+@{
+}
+
+<br>
+<h2>List of Customers</h2>
+<a class="btn btn-primary btn-sm" role="button" href="/Customers/Create">New Customer</a>
+
+@if (Model.errorMessage.Length > 0)
+{
+             <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>@Model.errorMessage</strong>
+                <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+}
+
+
+<table class="table">
+    <thread>
+        <tr>
+            <th>Cust_ID</th>
+            <th>First_Name</th>
+            <th>Last_Name</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Active</th>
+            <th>Created_Date</th>
+            <th>Last_Update</th>
+        </tr>
+    </thread>
+
+    
+    <tbody>
+        @foreach(var item in Model.CustomerList)
+        {
+            <tr>
+                <td>@item.Cust_ID</td>
+                <td>@item.First_Name</td>
+                <td>@item.Last_Name</td>
+                <td>@item.Email</td>
+                <td>@item.Address</td>
+                <td>@item.Active</td>
+                <td>@item.Created_Date</td>
+                <td>@item.Last_Update</td>
+
+                
+                <td>
+                    <a class="btn btn-primary btn-sm" role="button" href="/Customers/Edit?Cust_ID=@item.Cust_ID">Edit</a>
+                    <a class="btn btn-danger btn-sm" role="button" href="/Customers/Delete?Cust_ID=@item.Cust_ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

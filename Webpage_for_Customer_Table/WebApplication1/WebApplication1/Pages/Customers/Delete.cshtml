@@ -1,0 +1,37 @@
+﻿
+@page
+@using System.Data.SqlClient;
+
+@{
+    string errorMessage = "";
+    string successMessage = "";
+    string cust_ID = Request.Query["Cust_ID"];
+
+    try
+    {
+        string connectionString = "*Insert Connection String Here!*";
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            connection.Open();
+
+            string sql = "DELETE from Customers WHERE Cust_ID = @Cust_ID;";
+
+            using (SqlCommand command = new SqlCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue("@Cust_ID", cust_ID);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+        successMessage = "Customer of ID: " + cust_ID + "successfully deleted!";
+
+    }
+    catch (Exception ex)
+    {
+        errorMessage = ex.Message;
+        return;
+    }
+
+    Response.Redirect("/Customers/Index");
+}

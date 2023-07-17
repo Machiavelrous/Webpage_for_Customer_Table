@@ -1,0 +1,73 @@
+﻿@page
+@model WebApplication1.Pages.Customers.EditModel
+@{
+}
+
+<br>
+<h2>Update Customer ID: @Model.customerInfo.Cust_ID</h2>
+
+@if (Model.errorMessage.Length > 0)
+{
+             <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>@Model.errorMessage</strong>
+                <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+}
+
+@if (Model.successMessage.Length > 0)
+{
+        <div class="row bm-3">
+            <div class="col-sm-9">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                 a   <strong>@Model.successMessage</strong>
+                    <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+}
+
+
+<form method="post">
+
+    <input type="hidden" class="form-control" name="id" value="@Model.customerInfo.Cust_ID"/>
+
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">First_Name</label>
+        <div class="col-sm-6"> 
+            <input type="text" class="form-control" name="First_Name" value="@Model.customerInfo.First_Name"/>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Last_Name</label>
+        <div class="col-sm-6"> 
+            <input type="text" class="form-control" name="Last_Name" value="@Model.customerInfo.Last_Name"/>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Email</label>
+        <div class="col-sm-6"> 
+            <input type="text" class="form-control" name="Email" value="@Model.customerInfo.Email"/>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Address</label>
+        <div class="col-sm-6"> 
+            <input type="text" class="form-control" name="Address" value="@Model.customerInfo.Address"/>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Active</label>
+        <div class="col-sm-6"> 
+            <input type="text" class="form-control" name="Active" value="@Model.customerInfo.Active"/>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="offset-sm-3 col-sm-3 d-grid"> 
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <div class="col-sm-3 d-grid"> 
+            <a class="btn btn-outline-primary" role="button" href="/">Cancel</a>
+        </div>
+    </div>
+</form>
